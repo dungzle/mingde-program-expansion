@@ -45,6 +45,10 @@ export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
   const hasInteracted = useRef(false);
 
+  // swipe handling
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -76,10 +80,43 @@ export default function HeroSlider() {
     setActiveIndex(index);
   };
 
+  // swipe handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+
+    const distance = touchStartX.current - touchEndX.current;
+
+    // minimum swipe distance
+    if (Math.abs(distance) < 50) return;
+
+    hasInteracted.current = true;
+
+    if (distance > 0) {
+      handleNext();
+    } else {
+      handlePrev();
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
     <section
       aria-label="Mingde International Student Exchange Program"
-      className="relative w-full min-h-[360px] md:min-h-[480px] lg:min-h-[520px] overflow-hidden bg-brand-light"
+      className="relative w-full min-h-[360px] md:min-h-[480px] lg:min-h-[520px]
+                 overflow-hidden bg-brand-light"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
     >
       {SLIDES.map((slide, index) => (
         <div
@@ -103,7 +140,7 @@ export default function HeroSlider() {
 
           <div className="absolute inset-0 flex items-center justify-center px-6 text-center">
             <div className="max-w-3xl text-white">
-              {/* SEO: Only ONE H1, always indexable */}
+              {/* SEO: Only one H1 */}
               {index === 0 ? (
                 <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
                   {slide.headline}
@@ -122,12 +159,13 @@ export default function HeroSlider() {
         </div>
       ))}
 
-      {/* previous */}
+      {/* Desktop-only chevrons */}
       <button
         type="button"
         onClick={handlePrev}
         aria-label="Previous slide"
-        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 text-white hover:text-white/80 transition"
+        className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2
+                   p-3 text-white hover:text-white/80 transition"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -137,18 +175,18 @@ export default function HeroSlider() {
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="h-8 w-8 md:h-10 md:w-10"
+          className="h-10 w-10"
         >
           <polyline points="15 18 9 12 15 6" />
         </svg>
       </button>
 
-      {/* next */}
       <button
         type="button"
         onClick={handleNext}
         aria-label="Next slide"
-        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 text-white hover:text-white/80 transition"
+        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2
+                   p-3 text-white hover:text-white/80 transition"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -158,13 +196,13 @@ export default function HeroSlider() {
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="h-8 w-8 md:h-10 md:w-10"
+          className="h-10 w-10"
         >
           <polyline points="9 18 15 12 9 6" />
         </svg>
       </button>
 
-      {/* dots */}
+      {/* Dots (all devices) */}
       <div className="absolute bottom-4 right-4 flex gap-2">
         {SLIDES.map((_, index) => (
           <button
