@@ -142,7 +142,7 @@ export default function HomePage() {
                   aria-label={card.title}
                   className="group relative overflow-hidden bg-white rounded-xl border border-brand-border p-5 shadow-sm transition
                      hover:border-brand-gold hover:shadow-md
-                     focus:outline-none focus:ring-2 focus:ring-brand-gold"
+                     focus:outline-none focus:ring-1 focus:ring-brand-gold"
                 >
                   {/* left accent */}
                   <div className="absolute left-0 top-0 h-full w-1 bg-brand-gold opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -216,22 +216,29 @@ export default function HomePage() {
         <section className="bg-brand-dark py-12 text-center text-brand-light">
           <div className="max-w-5xl mx-auto px-5 sm:px-6">
             <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Ready to learn more about the Mingde exchange?
+              Interested in the Mingde Student Exchange?
             </h2>
 
             <p className="text-sm md:text-base text-brand-muted max-w-[60ch] mx-auto mb-6">
-              Families are welcome to request detailed program materials,
-              timelines, and safety information.
+              Families can request detailed program information, timelines, and
+              safety details before deciding on next steps. Submitting an
+              interest form does not commit you to participation.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <CTAButton href="/contact">Contact & Next Steps</CTAButton>
+              {/* Primary */}
+              <CTAButton href="/contact" className="w-full sm:w-auto">
+                Request Program Information
+              </CTAButton>
 
+              {/* Secondary */}
               <Link
-                href="/apply"
-                className="px-5 py-3 rounded-lg border border-brand-light text-sm text-brand-light hover:bg-brand-light hover:text-brand-dark transition"
+                href="/program"
+                className="w-full sm:w-auto px-5 py-3 rounded-lg border border-brand-light
+               text-sm text-brand-light text-center
+               hover:bg-brand-light hover:text-brand-dark transition"
               >
-                Apply Now
+                Review Program Details
               </Link>
             </div>
           </div>
