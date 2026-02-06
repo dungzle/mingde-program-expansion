@@ -12,55 +12,6 @@ interface NavLink {
   href?: string;
 }
 
-interface NavDropdownLinks {
-  program: NavLink[];
-  studentLife: NavLink[];
-}
-
-const NAV_DROPDOWN_LINKS: NavDropdownLinks = {
-  program: [
-    {
-      label: "Program Overview",
-      id: "program-overview",
-      href: "/program-overview",
-    },
-    {
-      label: "Academic Experience",
-      id: "academic-experience",
-      href: "/academic-experience",
-    },
-    {
-      label: "Workshops & Cultural Activities",
-      id: "workshops-cultural-activities",
-      href: "/workshops-cultural-activities",
-    },
-  ],
-  studentLife: [
-    {
-      label: "Daily Life & Student Pairing",
-      id: "daily-life-student-pairing",
-      href: "/daily-life-student-pairing",
-    },
-    {
-      label: "Accommodation & Safety",
-      id: "accommodation-safety",
-      href: "/accommodation-safety",
-    },
-  ],
-  planning: [
-    {
-      label: "Travel & Timeline",
-      id: "travel-timeline",
-      href: "/travel-timeline",
-    },
-    {
-      label: "Accommodation & Safety",
-      id: "accommodation-safety",
-      href: "/accommodation-safety",
-    },
-  ],
-};
-
 const NAV_LINKS: NavLink[] = [
   {
     label: "Home",
