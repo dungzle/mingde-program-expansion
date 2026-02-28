@@ -17,6 +17,7 @@ module.exports = {
           // Neutrals (clean, modern, readable)
           dark: "#1F2937", // main text
           muted: "#6B7280", // secondary text
+          "muted-light": "#D1D5DB", // secondary text on dark backgrounds
           light: "#FAFAFA", // page background
           border: "#E5E7EB", // dividers, cards
         },

@@ -12,7 +12,7 @@ export default function AccommodationSafetyPage() {
 
         <div className="mt-4 w-16 h-1 bg-brand-gold rounded-full" />
 
-        <p className="mt-6 text-base md:text-lg text-brand-muted max-w-3xl">
+        <p className="mt-6 text-base md:text-lg text-brand-muted">
           Student well-being is a priority throughout the Mingde exchange
           experience. Accommodation arrangements and safety measures are
           carefully planned to provide families with clarity, consistency, and
@@ -20,43 +20,40 @@ export default function AccommodationSafetyPage() {
         </p>
       </section>
 
-      {/* Accommodation overview */}
-      <section className="max-w-6xl mx-auto px-6 pb-20">
-        <h2 className="text-xl md:text-2xl font-semibold mb-4">
-          Accommodation Options
+      {/* Host Family Section */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <h2 className="text-xl md:text-2xl font-semibold mb-6">
+          Host Family Selection & Standards
         </h2>
 
-        <p className="text-base text-brand-muted max-w-3xl mb-8">
-          Accommodation arrangements are selected to support student comfort,
-          supervision, and daily routines. Final details will be confirmed prior
-          to departure.
-        </p>
-
-        <div className="grid gap-6 sm:grid-cols-2">
-          {/* Dormitory */}
+        <div className="grid gap-8 md:grid-cols-2">
           <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-sm">
-            <h3 className="font-medium text-brand-dark mb-3">
-              School Dormitory Accommodation
+            <h3 className="font-medium text-brand-dark mb-4">
+              Host Family Requirements
             </h3>
-            <ul className="space-y-3 text-sm text-brand-muted">
-              <li>• On-campus or school-managed dormitory facilities</li>
-              <li>• Supervised living environment with clear routines</li>
-              <li>• Students housed alongside peers</li>
+            <ul className="space-y-3 text-sm md:text-base text-brand-muted">
+              <li>
+                • Priority given to families with a private vehicle for timely
+                school pickup and drop-off
+              </li>
+              <li>• Separate bedroom provided for visiting student</li>
+              <li>
+                • Comfortable living conditions appropriate for student
+                accommodation
+              </li>
             </ul>
           </div>
 
-          {/* Host family */}
           <div className="rounded-2xl border border-brand-border bg-white p-6 shadow-sm">
-            <h3 className="font-medium text-brand-dark mb-3">
-              Host Family Accommodation
+            <h3 className="font-medium text-brand-dark mb-4">
+              Screening & Preparation
             </h3>
-            <ul className="space-y-3 text-sm text-brand-muted">
-              <li>• Selected local host families</li>
-              <li>
-                • Opportunity to experience daily life in a family setting
-              </li>
-              <li>• Ongoing communication between hosts and program staff</li>
-            </ul>
+            <p className="text-sm md:text-base text-brand-muted">
+              All host families are screened and briefed prior to participation.
+              Expectations regarding student care, communication, safety, and
+              cultural sensitivity are clearly outlined to ensure a supportive
+              and welcoming home environment.
+            </p>
           </div>
         </div>
       </section>

@@ -32,12 +32,11 @@ export default function HomePage() {
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </Head>
 
-      {/* Skip link for a11y */}
+      {/* Skip link */}
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-white focus:text-brand-dark focus:px-3 focus:py-2 rounded"
@@ -45,45 +44,57 @@ export default function HomePage() {
         Skip to content
       </a>
 
-      {/* Hero (keeps your HeroSlider component) */}
+      {/* Hero */}
       <header aria-label="Site hero">
         <HeroSlider />
       </header>
 
       <main id="main" className="bg-brand-light">
-        {/* Intro + primary CTA */}
-        <section className="max-w-7xl mx-auto px-5 sm:px-6 md:px-8 py-12 md:py-20 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-brand-dark">
-              A school-based international exchange with{" "}
-              <span className="text-brand-gold">Mingde School</span>
-            </h1>
+        {/* Title Block */}
+        <section className="text-center pt-14 pb-8 px-6">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight text-brand-dark">
+            Global Connections: The Canada-Changsha Student Exchange
+          </h1>
 
-            <p className="mt-4 text-base md:text-lg text-brand-muted max-w-[44ch]">
-              Short-term, carefully supervised exchanges that place Canadian
-              high school students into Mingde School for classroom
-              participation, cultural workshops, and supported daily life — with
-              families kept clearly informed every step of the way.
+          <h2 className="text-xl md:text-2xl font-semibold text-brand-gold mt-4">
+            Bridging Cultures, Building Friendships
+          </h2>
+        </section>
+
+        {/* Intro + Video */}
+        <section className="max-w-7xl mx-auto px-6 pt-4 pb-12 md:py-12 grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <p className="text-base md:text-lg text-brand-muted leading-relaxed">
+              Welcome to the official home of the{" "}
+              <strong>Canada-Mingde Exchange</strong> Program, a premier
+              intercultural journey designed to connect Canadian students with
+              the vibrant heart of China. This is more than just a trip; it’s an
+              opportunity to live, learn, and grow alongside peers at the
+              prestigious <strong>Mingde Middle School</strong> in Changsha.
             </p>
 
-            <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <CTAButton href="/program" aria-label="Explore the Program">
-                Explore the Program
-              </CTAButton>
+            <p className="mt-6 text-base md:text-lg text-brand-muted leading-relaxed">
+              Through immersive host-family stays and a dynamic schedule of
+              campus and city adventures, participants gain a profound
+              understanding of China’s 3,000-year history while building the
+              global leadership skills needed for the future.
+            </p>
+
+            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+              <CTAButton href="/program">Explore the Program</CTAButton>
 
               <Link
                 href="/contact"
-                className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg border border-brand-blue px-4 py-3 text-sm font-medium text-brand-blue hover:bg-brand-blue hover:text-white transition"
-                aria-label="Contact Mingde School"
+                className="inline-flex items-center justify-center rounded-lg border border-brand-blue px-5 py-3 text-sm font-medium text-brand-blue hover:bg-brand-blue hover:text-white transition"
               >
                 Contact & Next Steps
               </Link>
             </div>
           </div>
 
-          {/* Hero video preview — lazy loaded */}
-          <div className="w-full">
-            <div className="aspect-video w-full overflow-hidden rounded-2xl shadow-sm bg-black">
+          {/* Video */}
+          <div>
+            <div className="aspect-video w-full overflow-hidden rounded-xl shadow-sm bg-black">
               <iframe
                 className="h-full w-full"
                 src="https://www.youtube.com/embed/LkkgqV8xb1k?rel=0"
@@ -100,20 +111,19 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Quick program signposts — parent-friendly, recovery nav */}
-        {/* Key Program Entry Points */}
-        <section className="bg-brand-goldLight py-12">
-          <div className="max-w-6xl mx-auto px-5 sm:px-6">
-            <h2 className="text-xl md:text-2xl font-semibold text-center mb-3">
+        {/* Key Navigation */}
+        <section className="bg-brand-goldLight py-14">
+          <div className="max-w-6xl mx-auto px-6">
+            <h2 className="text-xl md:text-2xl font-semibold text-center mb-4">
               Start Here: Key Program Information
             </h2>
 
-            <p className="text-center text-sm text-brand-muted max-w-[60ch] mx-auto mb-8">
+            <p className="text-center text-sm text-brand-muted max-w-2xl mx-auto mb-10">
               These pages explain how the program works, what students
               experience each day, and how travel and supervision are handled.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
                   title: "Program Overview",
@@ -139,43 +149,33 @@ export default function HomePage() {
                 <Link
                   key={card.href}
                   href={card.href}
-                  aria-label={card.title}
-                  className="group relative overflow-hidden bg-white rounded-xl border border-brand-border p-5 shadow-sm transition
-                     hover:border-brand-gold hover:shadow-md
-                     focus:outline-none focus:ring-1 focus:ring-brand-gold"
+                  className="bg-white rounded-xl border border-brand-border p-6 shadow-sm hover:shadow-md transition"
                 >
-                  {/* left accent */}
-                  <div className="absolute left-0 top-0 h-full w-1 bg-brand-gold opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <h3 className="font-semibold text-sm text-brand-dark mb-1">
-                        {card.title}
-                      </h3>
-                      <p className="text-xs text-brand-muted leading-relaxed">
-                        {card.desc}
-                      </p>
-                    </div>
-                  </div>
+                  <h3 className="font-semibold text-sm text-brand-dark mb-2">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs text-brand-muted leading-relaxed">
+                    {card.desc}
+                  </p>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Exchange Structure & Support */}
-        <section className="max-w-6xl mx-auto px-5 sm:px-6 py-10">
-          <h2 className="text-lg md:text-xl font-semibold text-center mb-6">
+        {/* Support Structure */}
+        <section className="max-w-6xl mx-auto px-6 py-14">
+          <h2 className="text-xl md:text-2xl font-semibold text-center mb-6">
             A Student Exchange, Thoughtfully Structured
           </h2>
 
-          <p className="text-center text-sm text-brand-muted max-w-[60ch] mx-auto mb-8">
+          <p className="text-center text-sm text-brand-muted max-w-2xl mx-auto mb-10">
             The Mingde exchange is designed to give students meaningful academic
             and cultural exposure while ensuring they feel supported, confident,
             and safe throughout their time at Mingde School.
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
               {
                 title: "Classroom Participation",
@@ -195,16 +195,17 @@ export default function HomePage() {
               {
                 title: "Safe Accommodation",
                 caption:
-                  "Students stay in on-campus housing or with carefully selected host families.",
+                  "Students stay with carefully selected host families who provide a safe and welcoming home environment.",
               },
             ].map((item) => (
               <div
                 key={item.title}
-                className="bg-white rounded-xl p-4 shadow-sm"
+                className="bg-white rounded-xl p-6 shadow-sm border border-brand-border"
               >
-                <div className="text-brand-gold text-2xl mb-2">●</div>
-                <div className="font-medium text-sm">{item.title}</div>
-                <div className="text-xs text-brand-muted mt-1 leading-relaxed">
+                <div className="font-medium text-sm text-brand-dark">
+                  {item.title}
+                </div>
+                <div className="text-xs text-brand-muted mt-2 leading-relaxed">
                   {item.caption}
                 </div>
               </div>
@@ -213,34 +214,19 @@ export default function HomePage() {
         </section>
 
         {/* Final CTA */}
-        <section className="bg-brand-dark py-12 text-center text-brand-light">
-          <div className="max-w-5xl mx-auto px-5 sm:px-6">
-            <h2 className="text-2xl md:text-3xl font-semibold mb-4">
-              Interested in the Mingde Student Exchange?
+        <section className="bg-brand-dark py-16 text-center text-brand-light">
+          <div className="max-w-4xl mx-auto px-6">
+            <h2 className="text-2xl md:text-3xl font-semibold mb-5">
+              Ready to Start Your Journey?
             </h2>
 
-            <p className="text-sm md:text-base text-brand-muted max-w-[60ch] mx-auto mb-6">
-              Families can request detailed program information, timelines, and
-              safety details before deciding on next steps. Submitting an
-              interest form does not commit you to participation.
+            <p className="text-sm md:text-base text-brand-muted-light max-w-xl mx-auto mb-8">
+              Whether you are a student looking for the adventure of a lifetime
+              or a parent seeking a safe, high-impact educational experience,
+              the Canada-Mingde Exchange is your gateway to a wider world.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              {/* Primary */}
-              <CTAButton href="/contact" className="w-full sm:w-auto">
-                Request Program Information
-              </CTAButton>
-
-              {/* Secondary */}
-              <Link
-                href="/program"
-                className="w-full sm:w-auto px-5 py-3 rounded-lg border border-brand-light
-               text-sm text-brand-light text-center
-               hover:bg-brand-light hover:text-brand-dark transition"
-              >
-                Review Program Details
-              </Link>
-            </div>
+            <CTAButton href="/contact">Request Program Information</CTAButton>
           </div>
         </section>
       </main>
